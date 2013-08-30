@@ -132,6 +132,9 @@ class WPSEO_XML_News_Sitemap {
 					$output .= "\t\t<news:genres>" . htmlspecialchars( $genre ) . '</news:genres>' . "\n";
 				$output .= "\t\t<news:publication_date>" . mysql2date( 'c', $item->post_date_gmt ) . '</news:publication_date>' . "\n";
 				$output .= "\t\t<news:title>" . htmlspecialchars( $item->post_title ) . '</news:title>' . "\n";
+			// CF // Added by Crowd Favorite to be able to add additional items
+			$output .= apply_filters( 'cf_yoast_seo_google_news_sitemap_item', '', $item );
+			// END CF //
 				if ( !empty( $keywords ) )
 					$output .= "\t\t<news:keywords>" . htmlspecialchars( $keywords ) . '</news:keywords>' . "\n";
 				$output .= $stock_tickers;
